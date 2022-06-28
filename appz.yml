@@ -1,0 +1,31 @@
+app:
+  code: AWSDMS
+  name: awsdms
+  notify: eachakala@ecloudcontrol.com
+  
+build:
+  version: 0.2
+  build_file: none
+  env: DEV
+  image_template: awsdms-0.2
+  output_files: output/*.zip
+  
+deploy:
+  context: eeshaachakala1/DEV
+  type: statefulset
+  #port: 8080
+  replicas: 1
+  
+  
+properties:
+  AWS_ACCESS_KEY_ID: AKIAW4BAQ6X6G74LXLHR
+  AWS_SECRET_ACCESS_KEY:
+    vault: AWS_SECRET_ACCESS_KEY
+  AWS_S3_BUCKET: testbucket-onetwo
+  SOURCE_DB_PASSWORD:
+    vault: SOURCE_DB_PASSWORD
+  TARGET_DB_PASSWORD:
+    vault: TARGET_DB_PASSWORD
+  AWS_S3_BUCKET_PATH: lyc_account/
+
+  nano: 73
